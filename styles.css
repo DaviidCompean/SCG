@@ -1,101 +1,130 @@
-body {
-    background-color: #000000;
-    font-family: 'Arial Narrow', Arial, sans-serif; 
-    color: #d1d3d4;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-nav {
-    background-color: #0000007c;
-    padding: 15px;
-    text-align: right;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 98%;
-    padding: 15px;
-    z-index: 1000;
+body {
+  background-color: #000000;
+  font-family: "Google Sans Flex", "Arial Narrow", Arial, sans-serif;
+  color: #d1d3d4;
+  margin: 0;
+  padding: 0;
 }
 
 header {
-    padding: 1.5rem 2rem;
-    background-color: #000000;
+  padding: 1.5rem 2rem;
+  background-color: #000000;
 }
+
 nav a {
-    color: #ffffffb9;
-    text-decoration: none;
-    margin-left: 15px;
+  color: #ffffffb9;
+  text-decoration: none;
 }
 
 nav a:hover {
-    color: #52bdee79;
+  color: #52bdee79;
 }
 
-h1{
-    color: #52bdee79;
-    font-size: 3em;
-    text-align: center;
-    padding: 1.5rem 2rem;
-    border-bottom: 5px solid #1ea19b6b;
+h1 {
+  color: #52bdee79;
+  font-size: 3em;
+  text-align: center;
+  padding: 1.5rem 2rem;
+  border-bottom: 5px solid #1ea19b6b;
 }
 
-h2, h3, h4{
-    color: #1b89d3;
-    font-size: 3em;
-    text-align: center;
+h2,
+h3,
+h4 {
+  color: #1b89d3;
+  font-size: 3em;
+  text-align: center;
 }
 
 p {
-    color: #c2b60e;
-    font-size: 1.2em;
-    line-height: 1.5;
-    text-align: center;
+  color: #c2b60e;
+  font-size: 1.2em;
+  line-height: 1.5;
+  text-align: center;
 }
 
 img {
-    display: block;
-    margin: 0 auto;
-}   
+  display: block;
+  margin: 0 auto;
+}
 
 main {
-    padding: 3rem 2rem;
-    max-width: 800px;
-    margin: 0 auto;
+  padding: 3rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 .alcanzes-titulo {
-    font-size: 1.1 rem;
-    letter-spacing: 0.05 rem;
-    text-transform: uppercase;
-    margin-bottom: 0.25 rem;
-    color: #e90577;
+  font-size: 1.1 rem;
+  letter-spacing: 0.05 rem;
+  text-transform: uppercase;
+  margin-bottom: 0.25 rem;
+  color: #e90577;
 }
 
 .precio {
-    font-weight: bold;
-    color: #13bcff;
+  font-weight: bold;
+  color: #13bcff;
+}
+
+footer {
+  background-color: #fff;
+}
+
+footer p {
+  color: #000 !important;
+  text-transform: uppercase;
 }
 
 .footer {
-    font-weight: 100;
-    font-size: 1.1 rem ;
-    text-transform: arial;
-    color: rgb(250, 1, 1); 
+  font-weight: 100;
+  font-size: 1.1 rem;
+  text-transform: arial;
 }
 
-#cotizacion-diaria  {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #e90577;
+#cotizacion-diaria {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #e90577;
 }
 
 #BotonCotizacion {
-    display: block;
-    margin-top: 1rem;
-    padding: 0.5 rem 1.25 rem;
-    background-color: #f8e803;
-    color: #033474;
-    border: none;
-    font-family: Georgia, serif;
-    font-size: 1rem;
-    cursor: pointer;    
+  display: block;
+  margin-top: 1rem;
+  padding: 0.5 rem 1.25 rem;
+  background-color: #f8e803;
+  color: #033474;
+  border: none;
+  font-family: Georgia, serif;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  max-width: 1200px;
+}
+
+.nav .nav-item {
+  padding: 20px;
+  color: #000;
+  background-color: #fff;
+}
+
+.nav .nav-item:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 0px;
 }
