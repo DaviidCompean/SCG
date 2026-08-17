@@ -115,16 +115,20 @@ footer p {
 .nav .nav-item {
   padding: 20px;
   color: #000;
-  background-color: #fff;
+  background-color: #fff;    
 }
 
 .nav .nav-item:hover {
   background-color: #000;
-  color: #fff;
+  color: #fff;  
 }
 
 .nav {
   display: flex;
   justify-content: center;
   gap: 0px;
+
+  position: sticky;
+  top: 0;
+  z-index: 0;
 }
