@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ookini Coffe de barrio</title>
+    <style>
+        /* --- VARIABLES DE DISEÑO (Estilo Japandi con Acento Azul Cielo) --- */
+        :root {
+            --bg-principal: #f2f8f5;      /* Crema/hueso zen muy suave */
+            --bg-tarjeta: #FFFFFF;        /* Blanco puro para contraste limpio */
+            --texto-principal: 
+            #000000;   /* Gris carbón casi negro para lectura relajada */
+            --texto-secundario: #686E6B;  /* Gris medio apagado para descripciones */
+            --azul-cielo: #5A92E5;        /* El color azul cielo de acento solicitado */
+            --azul-cielo-claro: #EBF2FC;  /* Variación suave para fondos de etiquetas */
+            --azul-cielo-oscuro: #3A72C5; /* Variación profunda para estados activos/hover */
+            --borde: #E2DFD8;             /* Líneas finas y sutiles */
+            --fuente-titulos: 'Georgia', serif;
+            --fuente-cuerpo: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        /* --- ESTILOS GENERALES --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-principal);
+            color: var(--texto-principal);
+            font-family: var(--fuente-cuerpo);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .contenedor {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* --- TIPOGRAFÍA --- */
+        h1, h2, h3 {
+            font-family: var(--fuente-titulos);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+        }
+
+        /* --- HEADER / NAVEGACIÓN --- */
+        header {
+            border-bottom: 1px solid var(--borde);
+            background-color: rgba(248, 246, 242, 0.85);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-family: var(--fuente-titulos);
+            font-size: 24px;
+            text-decoration: none;
+            color: var(--texto-principal);
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--azul-cielo);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--texto-secundario);
+            margin-left: 32px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--azul-cielo);
+        }
+
+        /* --- BOTONES / CTA --- */
+        .btn {
+            display: inline-block;
+            background-color: var(--azul-cielo);
+            color: #FFFFFF;
+            padding: 14px 28px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--azul-cielo-oscuro);
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            padding: 100px 0 80px 0;
+            text-align: center;
+            border-bottom: 1px solid var(--borde);
+        }
+
+        .hero h1 {
+            font-size: 46px;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--texto-secundario);
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+        }
+
+        /* --- CONTADOR DE DISPONIBILIDAD SIMULADO --- */
+        .indicador-diario {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--azul-cielo-claro);
+            color: var(--azul-cielo-oscuro);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 32px;
+        }
+
+        .indicador-diario::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: var(--azul-cielo);
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: pulso 2s infinite;
+        }
+
+        @keyframes pulso {
+            0% { opacity: 0.4; }
+            50% { opacity: 1; }
+            100% { opacity: 0.4; }
+        }
+
+        /* --- SECCIÓN SECCIONES GENERALES --- */
+        .seccion {
+            padding: 90px 0;
+            border-bottom: 1px solid var(--borde);
+        }
+
+        .titulo-seccion {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 16px;
+        }
+
+        .subtitulo-seccion {
+            text-align: center;
+            color: var(--texto-secundario);
+            font-size: 16px;
+            max-width: 500px;
+            margin: 0 auto 60px auto;
+        }
+
+        /* --- ORIGEN DEL NOMBRE --- */
+        .origen-contenido {
+            max-width: 750px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .origen-contenido p {
+            font-size: 18px;
+            color: var(--texto-principal);
+            margin-bottom: 24px;
+            font-style: italic;
+            font-family: var(--fuente-titulos);
+            line-height: 1.8;
+        }
+
+        .origen-contenido p.firma {
+            font-family: var(--fuente-cuerpo);
+            font-size: 14px;
+            font-style: normal;
+            color: var(--texto-secundario);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* --- MÉTODOS Y MENÚ --- */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+
+        .tarjeta-menu {
+            background-color: var(--bg-tarjeta);
+            border: 1px solid var(--borde);
+            border-radius: 4px;
+            padding: 40px 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tarjeta-menu:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.02);
+        }
+
+        .tarjeta-encabezado {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 16px;
+        }
+
+        .tarjeta-titulo {
+            font-size: 22px;
+            color: var(--texto-principal);
+        }
+
+        .tarjeta-precio {
+            font-family: var(--fuente-titulos);
+            font-size: 22px;
+            color: var(--azul-cielo-oscuro);
+            font-weight: bold;
+        }
+
+        .tarjeta-descripcion {
+            font-size: 15px;
+            color: var(--texto-secundario);
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+
+        .etiqueta-metodo {
+            display: inline-block;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 12px;
+            border-radius: 2px;
+            margin-bottom: 16px;
+            align-self: flex-start;
+        }
+
+        .etiqueta-reserva {
+            background-color: var(--azul-cielo-claro);
+            color: var(--azul-cielo-oscuro);
+        }
+
+        .etiqueta-libre {
+            background-color: #E2ECE9;
+            color: #2E6554;
+        }
+
+        /* --- RESERVAS FORMULARIO --- */
+        .bloque-reserva {
+            background-color: var(--bg-tarjeta);
+            border: 1px solid var(--borde);
+            max-width: 650px;
+            margin: 0 auto;
+            padding: 48px;
+            border-radius: 4px;
+        }
+
+        .grupo-formulario {
+            margin-bottom: 24px;
+        }
+
+        .grupo-formulario label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--texto-principal);
+        }
+
+        .grupo-formulario input, 
+        .grupo-formulario select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--borde);
+            background-color: #FAFAFA;
+            border-radius: 4px;
+            font-size: 15px;
+            color: var(--texto-principal);
+            transition: border-color 0.3s ease, outline 0.3s ease;
+        }
+
+        .grupo-formulario input:focus, 
+        .grupo-formulario select:focus {
+            border-color: var(--azul-cielo);
+            outline: none;
+            background-color: #FFFFFF;
+        }
+
+        .nota-limite {
+            font-size: 13px;
+            color: var(--texto-secundario);
+            margin-top: 6px;
+            display: block;
+            font-style: italic;
+        }
+
+        /* --- NOTIFICACIÓN INTERACTIVA (MODAL SIMULADO) --- */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(34, 37, 36, 0.5);
+            backdrop-filter: blur(4px);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .modal-contenido {
+            background-color: var(--bg-tarjeta);
+            padding: 40px;
+            border-radius: 4px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            border: 1px solid var(--borde);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .modal-icono {
+            width: 60px;
+            height: 60px;
+            background-color: var(--azul-cielo-claro);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 24px auto;
+            color: var(--azul-cielo-oscuro);
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .modal h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .modal p {
+            color: var(--texto-secundario);
+            font-size: 15px;
+            margin-bottom: 24px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--texto-principal);
+            color: #FFFFFF;
+            padding: 60px 0;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        footer p {
+            color: #A0A5A2;
+            margin-bottom: 8px;
+        }
+
+        .marca-footer {
+            font-family: var(--fuente-titulos);
+            font-size: 20px;
+            color: #FFFFFF;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        /* --- RESPONSIVO --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 32px; }
+            .hero padding { padding: 60px 0; }
+            .bloque-reserva { padding: 24px; }
+            nav { display: none; } /* En un sitio de producción añadirías menú hamburguesa */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- CABECERA -->
+    <header>
+        <div class="contenedor nav-container">
+            <a href="#" class="logo">Ookini<span>.</span></a>
+            <nav>
+                <a href="#origen">El Origen</a>
+                <a href="#metodos">Métodos</a>
+                <a href="#reservar">Reservar</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="contenedor">
+            <div class="indicador-diario" id="contador-tazas">Hoy quedan 34 de 50 tazas especiales disponibles</div>
+            <h1>Café de precisión preparado en absoluta calma.</h1>
+            <p>Un espacio dedicado a los rituales de extracción lenta y compleja. En Ookini limitamos nuestra barra diaria para honrar cada grano.</p>
+            <a href="#reservar" class="btn">Reservar una Experiencia</a>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: ORIGEN -->
+    <section id="origen" class="seccion">
+        <div class="contenedor">
+            <h2 class="titulo-seccion">El Origen</h2>
+            <div class="subtitulo-seccion">Por qué hacemos lo que hacemos</div>
+            <div class="origen-contenido">
+                <p>
+                    "Ookini" (おおきに) es una expresión tradicional de los antiguos barrios de Kioto que se utiliza para decir "gracias" desde lo más profundo del corazón. 
+                </p>
+                <p>
+                    Elegimos este nombre porque entendemos cada taza como un intercambio de gratitud mutua entre el productor, el barista y tú. No buscamos la inmediatez ni el consumo masivo; nuestra barra rinde culto al tiempo, la precisión milimétrica y la serenidad que requiere una extracción perfecta.
+                </p>
+                <p class="firma">Culto al café lento</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: MÉTODOS -->
+    <section id="metodos" class="seccion">
+        <div class="contenedor">
+            <h2 class="titulo-seccion">Nuestros Métodos</h2>
+            <div class="subtitulo-seccion">Explora la complejidad del agua y el grano</div>
+            
+            <div class="menu-grid">
+                <!-- V60 -->
+                <div class="tarjeta-menu">
+                    <div>
+                        <span class="etiqueta-metodo etiqueta-reserva">Requiere Reserva</span>
+                        <div class="tarjeta-encabezado">
+                            <h3 class="tarjeta-titulo">V60 Manual</h3>
+                            <span class="tarjeta-precio">$5</span>
+                        </div>
+                        <p class="tarjeta-descripcion">Una extracción limpia y de cuerpo ligero que resalta las notas ácidas, florales y frutales más sutiles de nuestros granos de origen único.</p>
+                    </div>
+                </div>
+
+                <!-- KYOTO DRIP -->
+                <div class="tarjeta-menu">
+                    <div>
+                        <span class="etiqueta-metodo etiqueta-reserva">Requiere Reserva</span>
+                        <div class="tarjeta-encabezado">
+                            <h3 class="tarjeta-titulo">Kyoto Drip</h3>
+                            <span class="tarjeta-precio">$7</span>
+                        </div>
+                        <p class="tarjeta-descripcion">Extracción gota a gota en torre de cristal durante más de 8 horas. Un cold brew de claridad organoléptica excepcional y nulo amargor.</p>
+                    </div>
+                </div>
+
+                <!-- SIPHON -->
+                <div class="tarjeta-menu">
+                    <div>
+                        <span class="etiqueta-metodo etiqueta-reserva">Requiere Reserva</span>
+                        <div class="tarjeta-encabezado">
+                            <h3 class="tarjeta-titulo">Siphon Japonés</h3>
+                            <span class="tarjeta-precio">$8</span>
+                        </div>
+                        <p class="tarjeta-descripcion">Un método teatral que combina la infusión completa y el vacío físico. Produce una taza de gran cuerpo, aroma intenso y temperatura idónea.</p>
+                    </div>
+                </div>
+
+                <!-- PRENSA FRANCESA -->
+                <div class="tarjeta-menu">
+                    <div>
+                        <span class="etiqueta-metodo etiqueta-libre">Walk-In (Sin Reserva)</span>
+                        <div class="tarjeta-encabezado">
+                            <h3 class="tarjeta-titulo">Prensa Francesa</h3>
+                            <span class="tarjeta-precio">$3</span>
+                        </div>
+                        <p class="tarjeta-descripcion">Disponible todo el día sin aviso previo. Conserva los aceites esenciales del café aportando una textura densa y un sabor robusto y tradicional.</p>
+                    </div>
+                </div>
+
+                <!-- CATA SEMANAL -->
+                <div class="tarjeta-menu" style="grid-column: span 1;">
+                    <div>
+                        <span class="etiqueta-metodo etiqueta-reserva">Experiencia Exclusiva</span>
+                        <div class="tarjeta-encabezado">
+                            <h3 class="tarjeta-titulo">Cata Semanal</h3>
+                            <span class="tarjeta-precio">$25</span>
+                        </div>
+                        <p class="tarjeta-descripcion">Una sesión de inmersión sensorial guiada una vez por semana. Limitado estrictamente a 8 cupos por sesión. Incluye degustación comparativa de 4 variedades y maridaje artesanal.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: RESERVAS -->
+    <section id="reservar" class="seccion">
+        <div class="contenedor">
+            <h2 class="titulo-seccion">Solicitar Reserva</h2>
+            <div class="subtitulo-seccion">Asegura tu taza en nuestra barra limitada diaria</div>
+
+            <div class="bloque-reserva">
+                <form id="form-reserva">
+                    <div class="grupo-formulario">
+                        <label for="tipo-experiencia">Tipo de Experiencia</label>
+                        <select id="tipo-experiencia" required>
+                            <option value="" disabled selected>Selecciona una opción</option>
+                            <option value="especial">Preparación Especial (Métodos Filtrados)</option>
+                            <option value="cata">Cata Semanal ($25 / Persona)</option>
+                        </select>
+                    </div>
+
+                    <!-- Campos dinámicos para Preparación Especial -->
+                    <div id="campos-especiales" style="display: none;">
+                        <div class="grupo-formulario">
+                            <label for="metodo-filtrado">Método de Filtrado Deseado</label>
+                            <select id="metodo-filtrado">
+                                <option value="V60">V60 ($5)</option>
+                                <option value="Kyoto">Kyoto Drip ($7)</option>
+                                <option value="Siphon">Siphon Japonés ($8)</option>
+                            </select>
+                        </div>
+                        <div class="grupo-formulario">
+                            <label for="cantidad-tazas">Cantidad de Tazas</label>
+                            <select id="cantidad-tazas">
+                                <option value="1">1 taza</option>
+                                <option value="2">2 tazas (Límite máximo por persona)</option>
+                            </select>
+                            <span class="nota-limite">Para garantizar que más personas disfruten del café, limitamos las reservas a un máximo de 2 tazas diarias por cliente.</span>
+                        </div>
+                    </div>
+
+                    <!-- Campos genéricos obligatorios -->
+                    <div class="grupo-formulario">
+                        <label for="fecha">Fecha de Visita</label>
+                        <input type="date" id="fecha" required>
+                    </div>
+
+                    <div class="grupo-formulario">
+                        <label for="nombre">Nombre Completo</label>
+                        <input type="text" id="nombre" placeholder="Ej. Hiroshi Tanaka" required>
+                    </div>
+
+                    <div class="grupo-formulario">
+                        <label for="contacto">Correo Electrónico o Teléfono</label>
+                        <input type="text" id="contacto" placeholder="ejemplo@correo.com o +12345678" required>
+                    </div>
+
+                    <button type="submit" class="btn" style="width: 100%; margin-top: 12px;">Confirmar Solicitud de Reserva</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- NOTIFICACIÓN DE ÉXITO (MODAL JS) -->
+    <div class="modal" id="modal-exito">
+        <div class="modal-contenido">
+            <div class="modal-icono">✓</div>
+            <h3 id="modal-titulo">¡Solicitud Recibida!</h3>
+            <p id="modal-mensaje">Hemos registrado tu reserva. Te enviaremos una confirmación formal en unos minutos.</p>
+            <button class="btn" onclick="cerrarModal()">Entendido</button>
+        </div>
+    </div>
+
+    <!-- PIE DE PÁGINA -->
+    <footer>
+        <div class="contenedor">
+            <div class="marca-footer">Ookini</div>
+            <p>Atención en Barra: Lunes a Sábado — 8:00 a 18:00</p>
+            <p>Prensa Francesa (Walk-in) disponible sin reserva previa hasta el cierre.</p>
+            <p style="margin-top: 24px; font-size: 12px; color: #686E6B;">&copy; 2026 Ookini Café de Especialidad. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- LÓGICA INTERACTIVA -->
+    <script>
+        // Elementos del DOM
+        const tipoExperiencia = document.getElementById('tipo-experiencia');
+        const camposEspeciales = document.getElementById('campos-especiales');
+        const formReserva = document.getElementById('form-reserva');
+        const modal = document.getElementById('modal-exito');
+        const contadorTazas = document.getElementById('contador-tazas');
+
+        // Estado simulado localmente (Backend simulado en Frontend)
+        let tazasDisponiblesHoy = 34;
+
+        // Mostrar u ocultar campos dinámicos según el tipo de experiencia seleccionado
+        tipoExperiencia.addEventListener('change', function() {
+            if (this.value === 'especial') {
+                camposEspeciales.style.display = 'block';
+                document.getElementById('metodo-filtrado').setAttribute('required', 'required');
+            } else {
+                camposEspeciales.style.display = 'none';
+                document.getElementById('metodo-filtrado').removeAttribute('required');
+            }
+        });
+
+        // Configurar restricción de fecha mínima (Hoy)
+        const hoy = new Date().toISOString().split('T')[0];
+        document.getElementById('fecha').setAttribute('min', hoy);
+
+        // Procesar el formulario de reserva
+        formReserva.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const tipo = tipoExperiencia.value;
+            const nombreCliente = document.getElementById('nombre').value;
+            let tituloModal = "¡Solicitud Recibida!";
+            let mensajeModal = "";
+
+            if (tipo === 'especial') {
+                const tazasSolicitadas = parseInt(document.getElementById('cantidad-tazas').value);
+                const metodo = document.getElementById('metodo-filtrado').value;
+
+                // Validación de regla de negocio
+                if (tazasSolicitadas > tazasDisponiblesHoy) {
+                    alert('Lo sentimos, solo quedan ' + tazasDisponiblesHoy + ' tazas disponibles para métodos especiales hoy.');
+                    return;
+                }
+
+                // Restar tazas del inventario diario simulado
+                tazasDisponiblesHoy -= tazasSolicitadas;
+                contadorTazas.innerText = `Hoy quedan ${tazasDisponiblesHoy} de 50 tazas especiales disponibles`;
+
+                tituloModal = "Reserva de Café Confirmada";
+                mensajeModal = `Gracias, ${nombreCliente}. Hemos reservado ${tazasSolicitadas} taza(s) de método ${metodo}. Tu lugar en la barra está asegurado.`;
+
+            } else if (tipo === 'cata') {
+                tituloModal = "Cupo Solicitado para la Cata";
+                mensajeModal = `Gracias, ${nombreCliente}. Hemos registrado tu solicitud para la Cata Semanal (máximo 8 personas). Nos comunicaremos contigo para confirmar tu cupo e indicarte el método de pago ($25).`;
+            }
+
+            // Mostrar el modal con los detalles dinámicos
+            document.getElementById('modal-titulo').innerText = tituloModal;
+            document.getElementById('modal-mensaje').innerText = mensajeModal;
+            modal.style.display = 'flex';
+
+            // Resetear formulario
+            formReserva.reset();
+            camposEspeciales.style.display = 'none';
+        });
+
+        function cerrarModal() {
+            modal.style.display = 'none';
+        }
+    </style>
+</body>
+</html>
