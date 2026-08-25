@@ -24,6 +24,14 @@ botonCotizacion.addEventListener("click", function () {
 
 });
 
+function abrirMenu() {
+    document.getElementById("menuLateral").classList.add("activo");
+}
+
+function cerrarMenu() {
+    document.getElementById("menuLateral").classList.remove("activo");
+}
+
 
 
 
