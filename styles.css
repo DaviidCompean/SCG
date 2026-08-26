@@ -13,7 +13,7 @@ body {
 
 header {
   padding: 1.5rem rem;
-  background-color: #1d1c1c;
+  background-color: #000000;
 }
 
 h1 {
@@ -123,85 +123,3 @@ footer p {
   padding: 0px;
 }
 
-/* Botón ☰ */
-.menu-btn {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-
-    font-size: 25px;
-    padding: 10px 15px;
-
-    background-color: #000000;
-    color: #ffffff;
-
-    border: none;
-    cursor: pointer;
-
-    z-index: 1001;
-}
-
-/* Menú lateral */
-.menu-lateral {
-    position: fixed;
-
-    top: 0;
-    left: -280px;
-
-    width: 280px;
-    height: 100vh;
-
-    background-color: #000000;
-
-    padding-top: 70px;
-
-    transition: 0.3s;
-
-    z-index: 1000;
-}
-
-/* Cuando el menú está abierto */
-.menu-lateral.activo {
-    left: 0;
-}
-
-/* Título */
-.menu-lateral h2 {
-    color: #2FA5E1;
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-/* Enlaces */
-.menu-lateral a {
-    display: block;
-
-    padding: 18px 25px;
-
-    color: #F5CA2F;
-    text-decoration: none;
-    
-
-    font-size: 18px;
-}
-
-/* Efecto al pasar el mouse */
-.menu-lateral a:hover {
-    background-color: #2FA5E1;
-}
-
-/* Botón cerrar */
-.cerrar-btn {
-    position: absolute;
-
-    top: 20px;
-    right: 20px;
-
-    background: none;
-    border: none;
-
-    color: rgb(240, 0, 0);
-    font-size: 25px;
-
-    cursor: pointer;
-}
